@@ -31,4 +31,4 @@ jobs:
                 name: Push Docker image
                 run: |
                     docker tag myperepo/python-app:${{ github.sha }} ${{ secrets.DOCKERHUB_USERNAME }}/python-app:${{ github.sha }}
-                    docker push ${{ secrets.DOCKERHUB_USERNAME }}/python-app:${ github.sha }
+                    docker push ${{ secrets.DOCKERHUB_USERNAME }}/python-app:${{ github.sha }}
