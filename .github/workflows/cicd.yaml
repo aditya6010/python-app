@@ -40,6 +40,8 @@ jobs:
                     echo "Pushing Docker image: ${{ secrets.DOCKERHUB_USERNAME }}/python-app:${SHORT_SHA}"
                     docker push ${{ secrets.DOCKERHUB_USERNAME }}/python-app:${SHORT_SHA}
                     echo "Docker image pushed successfully."
+        outputs:
+            commit_id: $(echo "${GITHUB_SHA}" | cut -c1-6)
 
 
 
@@ -48,6 +50,11 @@ jobs:
         runs-on: self-hosted
 
         steps:
+            - 
+                name: Modify values file
+                run: |
+                    echo ${{needs.ci.outputs.commit_id}}
+                    
             - 
                 name: Install argocd
                 run: |
@@ -64,4 +71,3 @@ jobs:
                      --insecure \
                      --grpc-web
                     argocd app sync python-app --grpc-web
-                    
