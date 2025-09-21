@@ -9,8 +9,8 @@ on:
     pull_request:
 
 jobs:
-    build-and-push:
-        runs-on: self-hosted
+    ci:
+        runs-on: ubuntu-latest
 
         steps:
             - 
@@ -44,8 +44,8 @@ jobs:
 
 
     CD:
-        needs: build-and-push
-        runs-on: unbuntu-latest
+        needs: ci
+        runs-on: self-hosted
 
         steps:
             - 
