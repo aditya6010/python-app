@@ -34,6 +34,7 @@ jobs:
                 run: |
                     echo "Tagging Docker image with short SHA..."
                     SHORT_SHA=$(echo "${GITHUB_SHA}" | cut -c1-6)
+                    echo "COMMIT_ID=${GITHUB_SHA::6}" >> "$GITHUB_ENV"
                     echo "SHORT_SHA=${SHORT_SHA}"
                     echo "Tagging image: myperepo/python-app:${{ github.sha }} -> ${{ secrets.DOCKERHUB_USERNAME }}/python-app:${SHORT_SHA}"
                     docker tag myperepo/python-app:${{ github.sha }} ${{ secrets.DOCKERHUB_USERNAME }}/python-app:${SHORT_SHA}
@@ -41,7 +42,7 @@ jobs:
                     docker push ${{ secrets.DOCKERHUB_USERNAME }}/python-app:${SHORT_SHA}
                     echo "Docker image pushed successfully."
         outputs:
-            commit_id: $(echo "${GITHUB_SHA}" | cut -c1-6)
+            commit_id: ${{ env.COMMIT_ID }}
 
 
 
