@@ -1,0 +1,34 @@
+name: CI
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+
+jobs:
+    build-and-push:
+        runs-on: ubuntu-latest
+
+        steps:
+            - 
+                name: Checkout repository
+                uses: actions/checkout@v3
+
+            - 
+                name: Build Docker image
+                run: |
+                    docker build -t myperepo/python-app:${{ github.sha }} .
+
+            - 
+                name: Log in to DockerHub
+                uses: docker/login-action@v3
+                with:
+                    username: ${{ secrets.DOCKERHUB_USERNAME }}
+                    password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+            - 
+                name: Push Docker image
+                run: |
+                    docker tag myperepo/python-app:${{ github.sha }} ${{ secrets.DOCKERHUB_USERNAME }}/python-app:${{ github.sha }}
+                    docker push ${{ secrets.DOCKERHUB_USERNAME }}/python-app:${{ github.sha }}
