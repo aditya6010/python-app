@@ -33,5 +33,5 @@ jobs:
                 name: Push Docker image
                 run: |
                     SHORT_SHA=$(echo "${GITHUB_SHA}" | cut -c1-6)
-                    docker tag myperepo/python-app:${GITHUB_SHA} ${{ secrets.DOCKERHUB_USERNAME }}/python-app:${SHORT_SHA}
+                    docker tag myperepo/python-app:${{ github.sha }} ${{ secrets.DOCKERHUB_USERNAME }}/python-app:${SHORT_SHA}
                     docker push ${{ secrets.DOCKERHUB_USERNAME }}/python-app:${SHORT_SHA}
