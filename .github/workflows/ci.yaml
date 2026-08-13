@@ -5,7 +5,7 @@ on:
     paths:
       - src/**
     branches:
-      - main
+      - feature1
 
 jobs:
   docker:
