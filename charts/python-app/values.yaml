@@ -2,7 +2,7 @@ replicaCount: 1
 image:
   repository: aditya6010/python-app
   pullPolicy: IfNotPresent
-  tag: "7c3019"
+  tag: "5adf0f"
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
