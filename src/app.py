@@ -10,7 +10,7 @@ def get_value_details():
         "value": "example_values",
         "timestamp": datetime.datetime.now().isoformat(),
         "hostname": socket.gethostname(),
-        "message": "This is  sample response from the Flask application:)"
+        "message": "This is response from the Flask application:)"
     })
 
 @app.route('/api/v1/healthz')
