@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route('/api/v1/details')
 def get_value_details():
     return jsonify({
-        "value": "example_value!!",
+        "value": "example_value!",
         "timestamp": datetime.datetime.now().isoformat(),
         "hostname": socket.gethostname(),
         "message": "This is a sample response from the Flask application.:)"
