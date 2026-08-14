@@ -1,0 +1,12 @@
+site_name: 'python-app'
+site_description: 'Getting started with Backstage TechDocs with a Python app that displays time.'
+repo_url: https://github.com/aditya6010/python-app
+edit_uri: edit/feature1/docs
+
+plugins:
+  - techdocs-core
+  
+# For sidebar navigation on https://backstage.io/, see `microsite/sidebars.js`
+nav:
+  - Overview:
+      - Getting Started: 'docs/index.md'
